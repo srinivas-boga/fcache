@@ -3,12 +3,13 @@ package fcache
 import (
 	"encoding/gob"
 	"os"
+	"time"
 )
 
 // This package is used to load items from a file and save items of the cache to a file.
 
 // LoadFromFile loads the cache from a file
-func (c *Cache[K, V]) LoadFromFile(path string) error {
+func (c *Cache[K, V]) LoadFromFile(path string, ttl time.Duration) error {
 	c.mu.Lock()
 	defer c.mu.Unlock()
 
@@ -19,7 +20,18 @@ func (c *Cache[K, V]) LoadFromFile(path string) error {
 	defer file.Close()
 
 	decoder := gob.NewDecoder(file)
-	return decoder.Decode(&c.Items)
+	if err := decoder.Decode(&c.Items); err != nil {
+		return err
+	}
+
+	// set the expiration time for the items as the current time with a TTL of 1 hour
+	for key, item := range c.Items {
+		c.Items[key] = CacheItem[V]{
+			Value:    item.Value,
+			ExpireAt: time.Now().Add(ttl),
+		}
+	}
+	return nil
 }
 
 // SaveToFile saves the cache to a file

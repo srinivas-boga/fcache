@@ -18,7 +18,7 @@ func TestSaveLoadFromFile(t *testing.T) {
 	}
 
 	cache2 := NewCache[string, int]()
-	err = cache2.LoadFromFile("test.gob")
+	err = cache2.LoadFromFile("test.gob", time.Hour)
 	if err != nil {
 		t.Fatal(err)
 	}
