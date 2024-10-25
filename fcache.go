@@ -5,6 +5,8 @@ import (
 	"time"
 )
 
+const EVICTION_CHECK_INTERVAL = 1 * time.Second
+
 // CacheItem is a struct that holds the value and the expiration time of the value
 type CacheItem[T any] struct {
 	Value    T
@@ -18,9 +20,13 @@ type Cache[K comparable, V any] struct {
 
 // NewCache creates a new cache
 func NewCache[K comparable, V any]() *Cache[K, V] {
-	return &Cache[K, V]{
+	// call eviction worker before returning the cache
+	// to start the eviction worker
+	cache := &Cache[K, V]{
 		Items: make(map[K]CacheItem[V]),
 	}
+	cache.StartEvictionWorker(EVICTION_CHECK_INTERVAL)
+	return cache
 }
 
 // Set adds a new item to the cache
