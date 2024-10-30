@@ -33,7 +33,7 @@ func TestBucketGetSetOverwritten(t *testing.T) {
 	val2 := make([]byte, 50)
 	rand.Read(val2)
 	key3 := []byte("key3")
-	val3 := make([]byte, 20)
+	val3 := make([]byte, 30)
 	rand.Read(val3)
 
 	// failing need to fix the overwritten case in the bucket
