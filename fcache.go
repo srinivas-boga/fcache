@@ -2,7 +2,7 @@ package fcache
 
 const NO_OF_BUCKETS = 512
 
-const BUCKET_SIZE = 1024
+const BUCKET_SIZE = 64 * 1024
 
 type Cache struct {
 	Buckets [NO_OF_BUCKETS]Bucket

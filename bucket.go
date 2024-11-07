@@ -48,8 +48,6 @@ func (b *Bucket) Get(k []byte) ([]byte, error) {
 }
 
 func (b *Bucket) ReadAt(idx uint64) ([]byte, []byte, error) {
-	b.mu.RLock()
-	defer b.mu.RUnlock()
 
 	if idx >= uint64(len(b.data)) {
 		ErrIndexOutOfRange := errors.New("index out of range")
