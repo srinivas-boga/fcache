@@ -7,10 +7,6 @@
 * Simple, easy to read source code.
 
 
-### Performance
-
-
-
 
 ### Limitations
 * Supports only []byte type for keys and values, need to serialize before storing them in the cache.
