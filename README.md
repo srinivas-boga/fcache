@@ -1,5 +1,7 @@
 # fcache - In memory thread safe key:value store to cache huge number of entries
 
+[![Go](https://github.com/srinivas-boga/fcache/actions/workflows/go.yml/badge.svg?branch=main&event=status)](https://github.com/srinivas-boga/fcache/actions/workflows/go.yml)
+
 ### Features
 * Thread Safe, Concurrent Go-routines can write and read values to the cache.
 * Designed to reduce GC overhead for a large number of entries by a custom HashTable Implementation.
