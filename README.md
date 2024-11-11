@@ -5,6 +5,7 @@
 ### Features
 * Thread Safe, Concurrent Go-routines can write and read values to the cache.
 * Designed to reduce GC overhead for a large number of entries by a custom HashTable Implementation.
+* gRPC server Implementation
 * Cache memory size can be specified when creating the cache.
 * Simple, easy to read source code.
 
