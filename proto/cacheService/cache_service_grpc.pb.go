@@ -4,7 +4,7 @@
 // - protoc             v5.28.3
 // source: cache_service.proto
 
-package service
+package cacheService
 
 import (
 	context "context"
@@ -19,8 +19,8 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CacheService_Get_FullMethodName = "/service.CacheService/Get"
-	CacheService_Set_FullMethodName = "/service.CacheService/Set"
+	CacheService_Get_FullMethodName = "/cacheService.CacheService/Get"
+	CacheService_Set_FullMethodName = "/cacheService.CacheService/Set"
 )
 
 // CacheServiceClient is the client API for CacheService service.
@@ -142,7 +142,7 @@ func _CacheService_Set_Handler(srv interface{}, ctx context.Context, dec func(in
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CacheService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "service.CacheService",
+	ServiceName: "cacheService.CacheService",
 	HandlerType: (*CacheServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
